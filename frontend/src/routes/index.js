@@ -4,6 +4,12 @@ import Home from '../pages/Home'
 import Login from '../pages/Login'
 import ForgotPassword from '../pages/ForgotPassword'
 import SignUp from '../pages/SignUp'
+import AdminPanel from '../pages/AdminPanel'
+import AllUsers from '../pages/AllUsers'
+import AllProducts from '../pages/AllProducts'
+import CategoryProduct from '../pages/CategoryProduct'
+import ProductDetails from '../pages/ProductDetails'
+import Cart from '../pages/Cart'
 
 const router = createBrowserRouter([
     {
@@ -25,6 +31,32 @@ const router = createBrowserRouter([
             {
                 path : "sign-up",
                 element : <SignUp/>
+            },
+            {
+                path : "product-category/:categoryName",
+                element : <CategoryProduct/>
+            },
+            {
+                path : "product/:id",
+                element : <ProductDetails/>
+            },
+            {
+                path : 'cart',
+                element : <Cart/>
+            },
+            {
+                path : "admin-panel",
+                element : <AdminPanel/>,
+                children : [
+                    {
+                        path : "all-users",
+                        element : <AllUsers/>
+                    },
+                    {
+                        path : "all-products",
+                        element : <AllProducts/>
+                    }
+                ]
             }
         ]
     }
