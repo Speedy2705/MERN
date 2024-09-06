@@ -13,7 +13,7 @@ const CategoryList = () => {
         const response = await fetch(SummaryApi.categoryProduct.url)
         const dataResponse = await response.json()        
         setLoading(false)
-        setCategoryProduct(dataResponse.data)
+        setCategoryProduct(dataResponse?.data || [])
     }
 
     useEffect(()=>{
@@ -35,7 +35,7 @@ const CategoryList = () => {
             (
                 categoryProduct.map((product,index)=>{
                     return(
-                        <Link to={"/product-category/"+product?.category} className='cursor-pointer' key={product?.category}>
+                        <Link to={"/product-category?category="+product?.category} className='cursor-pointer' key={product?.category}>
                             <div className='w-16 h-16 p-4 bg-slate-200 md:w-20 md:h-20 flex rounded-full overflow-hidden items-center justify-center'>
                                 <img src={product?.productImage[0]} alt={product.category} className='h-full object-scale-down mix-blend-multiply hover:scale-150 transition-all'/>
                             </div>
